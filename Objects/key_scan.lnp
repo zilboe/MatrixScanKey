@@ -1,0 +1,6 @@
+".\Objects\main.obj",
+".\Objects\Key.obj",
+".\Objects\usart.obj",
+".\Objects\Timer.obj" 
+TO ".\Objects\key_scan" 
+PRINT(".\Listings\key_scan.m51") RAMSIZE(256) 

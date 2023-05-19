@@ -1,0 +1,87 @@
+C51 COMPILER V9.57.0.0   TIMER                                                             05/19/2023 22:08:01 PAGE 1   
+
+
+C51 COMPILER V9.57.0.0, COMPILATION OF MODULE TIMER
+OBJECT MODULE PLACED IN .\Objects\Timer.obj
+COMPILER INVOKED BY: D:\Keil5_Mdk\C51\BIN\C51.EXE Timer\Timer.c OPTIMIZE(8,SPEED) BROWSE INCDIR(..\key_scan;.\Key;.\usar
+                    -t;.\Timer;.\Application) DEBUG OBJECTEXTEND PRINT(.\Listings\Timer.lst) TABS(2) OBJECT(.\Objects\Timer.obj)
+
+line level    source
+
+   1          #include "Timer.h"
+   2          #include "Key.h"
+   3          uint16_t sysCount;
+   4          uint8_t keyvalue;
+   5          uint32_t systicks;
+   6          uint32_t keyComNumber;
+   7          bool isLeftModeFlag = false;
+   8          static uint8_t lastKeyValue;
+   9          void interTimer0Init(void)
+  10          {
+  11   1          TMOD |= 0x01;
+  12   1          TH0 = (65536-1000)/256;
+  13   1          TL0 = (65536-1000)%256;
+  14   1          TH1 = 
+  15   1          ET0 = 1;
+  16   1          TR0 = 1;
+  17   1          EA = 1;
+  18   1      }
+  19          
+  20          void runAppLamp(void)
+  21          {
+  22   1          if((P2>>7)&1)
+  23   1          {
+  24   2              P2 &= ~(1<<7);
+  25   2          }
+  26   1          else
+  27   1          {
+  28   2              P2 |= (1<<7);
+  29   2          }
+  30   1      }
+  31          
+  32          void interrupt_timer1(void) interrupt 1
+  33          {
+  34   1          TH0 = (65536-1000)/256;    // 中断后，赋初值；
+  35   1          TL0 = (65536-1000)%256; 
+  36   1          if(!isLeftModeFlag)
+  37   1          {
+  38   2              keyvalue = getKeyValue();
+  39   2          }
+  40   1          else
+  41   1          {
+  42   2             keyvalue = getKeyValue2(); 
+  43   2          }
+  44   1          if(keyvalue != 0x00)
+  45   1            isLeftModeFlag = ~isLeftModeFlag;
+  46   1          if(lastKeyValue==keyvalue)
+  47   1          {
+  48   2             keyComNumber++; 
+  49   2          }
+  50   1          else
+  51   1          {
+  52   2              keyComNumber = 0;
+  53   2          }
+  54   1          sysCount++;       // 每次中断，计数 累加 1；
+C51 COMPILER V9.57.0.0   TIMER                                                             05/19/2023 22:08:01 PAGE 2   
+
+  55   1          systicks++;
+  56   1          if(sysCount>=1000)
+  57   1          {
+  58   2            runAppLamp();     //运行灯
+  59   2            sysCount = 0; 
+  60   2          }
+  61   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    180    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      9    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

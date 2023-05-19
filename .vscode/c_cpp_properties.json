@@ -1,0 +1,41 @@
+{
+    "configurations": [
+        {
+            "name": "Target 1",
+            "includePath": [
+                "c:\\Users\\Administrator\\Desktop\\key_scan",
+                "c:\\Users\\Administrator\\Desktop\\key_scan\\Key",
+                "c:\\Users\\Administrator\\Desktop\\key_scan\\usart",
+                "c:\\Users\\Administrator\\Desktop\\key_scan\\Timer",
+                "c:\\Users\\Administrator\\Desktop\\key_scan\\Application",
+                "D:\\Keil5_Mdk\\C51\\INC"
+            ],
+            "defines": [
+                "__C51__",
+                "__VSCODE_C51__",
+                "reentrant=",
+                "compact=",
+                "small=",
+                "large=",
+                "data=",
+                "idata=",
+                "pdata=",
+                "bdata=",
+                "xdata=",
+                "code=",
+                "bit=char",
+                "sbit=char",
+                "sfr=char",
+                "sfr16=int",
+                "sfr32=int",
+                "interrupt=",
+                "using=",
+                "_at_=",
+                "_priority_=",
+                "_task_="
+            ],
+            "intelliSenseMode": "${default}"
+        }
+    ],
+    "version": 4
+}

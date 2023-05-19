@@ -1,0 +1,43 @@
+C51 COMPILER V9.57.0.0   MAIN                                                              05/19/2023 22:07:39 PAGE 1   
+
+
+C51 COMPILER V9.57.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Keil5_Mdk\C51\BIN\C51.EXE Application\main.c OPTIMIZE(8,SPEED) BROWSE INCDIR(..\key_scan;.\Key;.
+                    -\usart;.\Timer;.\Application) DEBUG OBJECTEXTEND PRINT(.\Listings\main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include "reg51.h"
+   2          #include <stdio.h>
+   3          #include "usart.h"
+   4          #include "Key.h"
+   5          #include "Timer.h"
+   6          // #include <REGX52.H>
+   7          extern uint8_t keyvalue;
+   8          extern Key_Info_t Key_Board;
+   9          int main()
+  10          {
+  11   1        interTimer0Init();
+  12   1        UartInit();
+  13   1        ScanKeyInit(&Key_Board);
+  14   1        while (1)
+  15   1        {
+  16   2          KeyValueProcess(keyvalue,&Key_Board);
+  17   2          Key_Board.key_func(&Key_Board);
+  18   2        }
+  19   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     43    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

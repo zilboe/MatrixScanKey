@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "key.h": "c",
+        "usart.h": "c",
+        "reg51.h": "c",
+        "REG51.H": "cpp",
+        "stdio.h": "c",
+        "STDIO.H": "cpp",
+        "main.h": "c",
+        "timer.h": "c",
+        "led.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}

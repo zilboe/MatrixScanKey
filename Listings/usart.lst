@@ -1,0 +1,59 @@
+C51 COMPILER V9.57.0.0   USART                                                             05/19/2023 21:26:10 PAGE 1   
+
+
+C51 COMPILER V9.57.0.0, COMPILATION OF MODULE USART
+OBJECT MODULE PLACED IN .\Objects\usart.obj
+COMPILER INVOKED BY: D:\Keil5_Mdk\C51\BIN\C51.EXE usart\usart.c OPTIMIZE(8,SPEED) BROWSE INCDIR(..\key_scan;.\Key;.\usar
+                    -t;.\Timer;.\Application) DEBUG OBJECTEXTEND PRINT(.\Listings\usart.lst) TABS(2) OBJECT(.\Objects\usart.obj)
+
+line level    source
+
+   1          #include "usart.h"
+   2          
+   3          void delay_Ms(unsigned short i)
+   4          {
+   5   1        unsigned short x,y;
+   6   1        for(x=i;x>0;x--)
+   7   1        for(y=1000;y>0;y--);
+   8   1      }
+   9          
+  10          void UartInit()   //9600bps@11.0592MHz
+  11          {
+  12   1        PCON &= 0x7F;   //�����ʲ�����
+  13   1        SCON = 0x40;    //8λ����,�ɱ䲨����
+  14   1        TMOD &= 0x0F;   //�����ʱ��1ģʽλ
+  15   1        TMOD |= 0x20;   //�趨��ʱ��1Ϊ8λ�Զ���װ��ʽ
+  16   1        TL1 = 0xFD;     //�趨��ʱ��ֵ
+  17   1        TH1 = 0xFD;     //�趨��ʱ����װֵ    
+  18   1        TR1 = 1;      //������ʱ��1
+  19   1        ET1 = 0;          //��ֹ��ʱ��1�ж�  
+  20   1      }
+  21          
+  22          void sendByte(unsigned char ch)
+  23          {
+  24   1        SBUF = ch;
+  25   1        while(!TI); TI=0;
+  26   1      }
+  27          void sendString(char *str)
+  28          {
+  29   1        while(*str != '\0')
+  30   1        {
+  31   2          sendByte(*str++);
+  32   2        }
+  33   1      }
+  34          
+  35          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     98    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
