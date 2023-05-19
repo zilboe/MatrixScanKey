@@ -2,15 +2,15 @@
 
 ## 矩阵键盘原理图如图所示
 
-![1684508182773](https://github.com/zilboe/MatrixScanKey/tree/main/%E8%A1%A5%E5%85%85%E8%B5%84%E6%96%99/1684508182773.png)
+ ![image text] (https://github.com/zilboe/MatrixScanKey/tree/main/%E8%A1%A5%E5%85%85%E8%B5%84%E6%96%99/1684508182773.png)
 
 ## 最终检测效果
 
-![1684508231379](https://github.com/zilboe/MatrixScanKey/tree/main/%E8%A1%A5%E5%85%85%E8%B5%84%E6%96%99/1684508231379.png)
+ ![image text] (https://github.com/zilboe/MatrixScanKey/tree/main/%E8%A1%A5%E5%85%85%E8%B5%84%E6%96%99/1684508231379.png)
 
 ## 多按键按下的结果
 
-![1684508293689](https://github.com/zilboe/MatrixScanKey/tree/main/%E8%A1%A5%E5%85%85%E8%B5%84%E6%96%99/1684508293689.png)
+ ![image text] (https://github.com/zilboe/MatrixScanKey/tree/main/%E8%A1%A5%E5%85%85%E8%B5%84%E6%96%99/1684508293689.png)
 
 有个bug仍需要解决就是多按键按下后触发事件之后，抬起其中一个按键，**按道理应该有个先抬和后抬按键的事件触发，但是目前现在就是必须两个按键全都抬起后才能重新按下触发事件**，所以现在在解决这个问题
 
