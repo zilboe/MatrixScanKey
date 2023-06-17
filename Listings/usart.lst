@@ -1,10 +1,10 @@
-C51 COMPILER V9.57.0.0   USART                                                             05/19/2023 21:26:10 PAGE 1   
+C51 COMPILER V9.57.0.0   USART                                                             06/01/2023 22:00:30 PAGE 1   
 
 
 C51 COMPILER V9.57.0.0, COMPILATION OF MODULE USART
 OBJECT MODULE PLACED IN .\Objects\usart.obj
 COMPILER INVOKED BY: D:\Keil5_Mdk\C51\BIN\C51.EXE usart\usart.c OPTIMIZE(8,SPEED) BROWSE INCDIR(..\key_scan;.\Key;.\usar
-                    -t;.\Timer;.\Application) DEBUG OBJECTEXTEND PRINT(.\Listings\usart.lst) TABS(2) OBJECT(.\Objects\usart.obj)
+                    -t;.\Timer;.\Application;.\DS18B20) DEBUG OBJECTEXTEND PRINT(.\Listings\usart.lst) TABS(2) OBJECT(.\Objects\usart.obj)
 
 line level    source
 

@@ -6,6 +6,8 @@
 // #include <REGX52.H>
 extern uint8_t keyvalue;
 extern Key_Info_t Key_Board;
+uint8_t TempValue = 0x00;
+
 int main()
 {
 	interTimer0Init();
@@ -13,6 +15,7 @@ int main()
 	ScanKeyInit(&Key_Board);
 	while (1)
 	{
+	  TempValue = ReadTemperature();
 		KeyValueProcess(keyvalue,&Key_Board);
 		Key_Board.key_func(&Key_Board);
 	}

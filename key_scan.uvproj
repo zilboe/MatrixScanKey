@@ -311,7 +311,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\key_scan;.\Key;.\usart;.\Timer;.\Application</IncludePath>
+              <IncludePath>..\key_scan;.\Key;.\usart;.\Timer;.\Application;.\DS18B20</IncludePath>
             </VariousControls>
           </C51>
           <Ax51>
@@ -402,6 +402,16 @@
         </Group>
         <Group>
           <GroupName>Led</GroupName>
+        </Group>
+        <Group>
+          <GroupName>ds18b20</GroupName>
+          <Files>
+            <File>
+              <FileName>ds18b20.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\DS18B20\ds18b20.c</FilePath>
+            </File>
+          </Files>
         </Group>
       </Groups>
     </Target>

@@ -8,6 +8,7 @@
                 "c:\\Users\\Administrator\\Desktop\\key_scan\\usart",
                 "c:\\Users\\Administrator\\Desktop\\key_scan\\Timer",
                 "c:\\Users\\Administrator\\Desktop\\key_scan\\Application",
+                "c:\\Users\\Administrator\\Desktop\\key_scan\\DS18B20",
                 "D:\\Keil5_Mdk\\C51\\INC"
             ],
             "defines": [

@@ -1,1 +1,1 @@
-"Key\Key.c" OPTIMIZE (8,SPEED) BROWSE INCDIR(..\key_scan;.\Key;.\usart;.\Timer;.\Application) DEBUG OBJECTEXTEND PRINT(.\Listings\Key.lst) TABS (2) OBJECT(.\Objects\Key.obj)
+"Key\Key.c" OPTIMIZE (8,SPEED) BROWSE INCDIR(..\key_scan;.\Key;.\usart;.\Timer;.\Application;.\DS18B20) DEBUG OBJECTEXTEND PRINT(.\Listings\Key.lst) TABS (2) OBJECT(.\Objects\Key.obj)

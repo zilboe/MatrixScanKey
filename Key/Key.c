@@ -1,4 +1,5 @@
 #include "Key.h"
+#include "ds18b20.h"
 Key_Info_t Key_Board;
 extern uint32_t systicks;
 extern uint32_t keyComNumber;
@@ -189,7 +190,8 @@ void KeyShortAction(Key_Info_t *key)
 	switch (key->key_value[0])
 	{
 	case S1:
-		sendString("S1 is down\r\n");
+		//sendString("S1 is down\r\n");
+		sendByte(TempValue);
 		break;
 	case S2:
 		sendString("S2 is down\r\n");
@@ -310,7 +312,7 @@ void KeyLiftAction(Key_Info_t *key)
 	switch (keyvalue)
 	{
 	case S1:
-		sendString("S1 is Lift\r\n");
+		//sendString("S1 is Lift\r\n");
 		break;
 	case S2:
 		sendString("S2 is Lift\r\n");
