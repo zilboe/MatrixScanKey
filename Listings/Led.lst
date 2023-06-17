@@ -1,21 +1,81 @@
-C51 COMPILER V9.57.0.0   LED                                                               05/18/2023 21:10:41 PAGE 1   
+C51 COMPILER V9.57.0.0   LED                                                               06/17/2023 13:44:29 PAGE 1   
 
 
 C51 COMPILER V9.57.0.0, COMPILATION OF MODULE LED
 OBJECT MODULE PLACED IN .\Objects\Led.obj
-COMPILER INVOKED BY: D:\Keil5_Mdk\C51\BIN\C51.EXE Led\Led.c OPTIMIZE(8,SPEED) BROWSE INCDIR(..\key_scan;.\Key;.\usart;.\
-                    -Timer;.\Led) DEBUG OBJECTEXTEND PRINT(.\Listings\Led.lst) TABS(2) OBJECT(.\Objects\Led.obj)
+COMPILER INVOKED BY: D:\Keil5_Mdk\C51\BIN\C51.EXE Led\Led.c LARGE OPTIMIZE(8,SPEED) BROWSE INCDIR(..\key_scan;.\Key;.\us
+                    -art;.\Timer;.\Application;.\DS18B20) DEBUG OBJECTEXTEND PRINT(.\Listings\Led.lst) TABS(2) OBJECT(.\Objects\Led.obj)
 
 line level    source
 
    1          #include "Led.h"
-   2          
+   2          #include "main.h"
+   3          sbit P22 = P2 ^ 2;
+   4          sbit P23 = P2 ^ 3;
+   5          sbit P24 = P2 ^ 4;
+   6          
+   7          void runLSD(void)
+   8          {
+   9   1        
+  10   1        uint8_t i=0;
+  11   1        for(i=0;i<8;i++)
+  12   1        {
+  13   2          P22 = 0;
+  14   2          P23 = 0;
+  15   2          P24 = 0;
+  16   2          delay_us(1);
+  17   2          P22 = 1;
+  18   2          P23 = 0;
+  19   2          P24 = 0;
+  20   2          delay_us(1);
+  21   2          P22 = 0;
+  22   2          P23 = 1;
+  23   2          P24 = 0;
+  24   2          delay_us(1);
+  25   2          P22 = 1;
+  26   2          P23 = 1;
+  27   2          P24 = 0;
+  28   2          delay_us(1);
+  29   2          P22 = 0;
+  30   2          P23 = 0;
+  31   2          P24 = 1;
+  32   2          delay_us(1);
+  33   2          P22 = 1;
+  34   2          P23 = 0;
+  35   2          P24 = 1;
+  36   2          delay_us(1);
+  37   2          P22 = 0;
+  38   2          P23 = 1;
+  39   2          P24 = 1;
+  40   2          delay_us(1);
+  41   2          P22 = 1;
+  42   2          P23 = 1;
+  43   2          P24 = 1;
+  44   2          delay_us(1);
+  45   2          
+  46   2        }
+  47   1      //  P22 = 1;
+  48   1      //  P23 = 0;
+  49   1      //  P24 = 0;
+  50   1      //  delay_Ms(1);
+  51   1      //  P22 = 0;
+  52   1      //  P23 = 1;
+  53   1      //  P24 = 0;
+  54   1      //  delay_Ms(1);
+C51 COMPILER V9.57.0.0   LED                                                               06/17/2023 13:44:29 PAGE 2   
+
+  55   1      //  P22 = 0;
+  56   1      //  P23 = 0;
+  57   1      //  P24 = 0;
+  58   1      //  delay_Ms(1);
+  59   1      }
+  60          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   ----    ----
+   CODE SIZE        =    107    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =   ----    ----
+   XDATA SIZE       =   ----       1
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----

@@ -2,6 +2,7 @@
 ".\Objects\Key.obj",
 ".\Objects\usart.obj",
 ".\Objects\Timer.obj",
+".\Objects\Led.obj",
 ".\Objects\ds18b20.obj" 
 TO ".\Objects\key_scan" 
 PRINT(".\Listings\key_scan.m51") RAMSIZE(256) 

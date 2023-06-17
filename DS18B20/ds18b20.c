@@ -1,6 +1,10 @@
 #include "ds18b20.h"
 #include "reg51.h"
 #include "main.h"
+#include "usart.h"
+#include "string.h"
+#include "stdlib.h"
+#include "stdio.h"
 sbit DQ = P3 ^ 7;
 void Ddelay(uint8_t t)
 {
@@ -70,4 +74,14 @@ uint8_t ReadTemperature(void)
 	temperature = ((tempH * 256) + tempL) * 0.0625 * 10;
 	Ddelay(200);
 	return (temperature); // 返回的是0123格式
+}
+
+void send_Temp(uint8_t temp)
+{
+	memset(buf,0,sizeof(buf));
+	sprintf(buf,"current temp is %d .\r",temp);
+	buf[strlen(buf)-1]='\0';
+	sendByte(temp);
+	//sendByte("0xAA");
+	//sendString(buf);
 }

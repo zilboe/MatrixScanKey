@@ -1,5 +1,5 @@
 #include "usart.h"
-
+char buf[64];
 void delay_Ms(unsigned short i)
 {
 	unsigned short x,y;

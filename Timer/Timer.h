@@ -5,4 +5,5 @@
 
 void interTimer0Init(void);
 
+void tick_delay_Ms(uint32_t ms);
 #endif

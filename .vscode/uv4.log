@@ -1,9 +1,21 @@
 Build target 'Target 1'
+compiling main.c...
+Application\main.c(18): warning C206: 'ReadTemperature': missing function-prototype
+compiling Key.c...
+compiling usart.c...
+compiling Timer.c...
+compiling ds18b20.c...
+DS18B20\ds18b20.c(49): warning C275: expression with possibly no effect
+DS18B20\ds18b20.c(85): warning C214: 'Argument': conversion: pointer to non-pointer
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_MS?USART
 
-Program Size: data=50.0 xdata=0 code=3834
-creating hex file from ".\Objects\key_scan"...
-".\Objects\key_scan" - 0 Error(s), 1 Warning(s).
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   DATA    
+    SEGMENT: _DATA_GROUP_
+    LENGTH:  0026H
+
+Program Size: data=141.1 xdata=0 code=6014
+Target not created.
 Build Time Elapsed:  00:00:00

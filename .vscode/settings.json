@@ -8,7 +8,8 @@
         "STDIO.H": "cpp",
         "main.h": "c",
         "timer.h": "c",
-        "led.h": "c"
+        "led.h": "c",
+        "ds18b20.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

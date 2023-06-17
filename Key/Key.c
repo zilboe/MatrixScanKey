@@ -183,6 +183,9 @@ void keyFuncProcess(Key_Info_t *key)
 	}
 }
 
+
+/*  */
+
 void KeyShortAction(Key_Info_t *key)
 {
 	if (key->key_status != Key_Short_Press)
@@ -190,8 +193,7 @@ void KeyShortAction(Key_Info_t *key)
 	switch (key->key_value[0])
 	{
 	case S1:
-		//sendString("S1 is down\r\n");
-		sendByte(TempValue);
+		send_Temp(TempValue);
 		break;
 	case S2:
 		sendString("S2 is down\r\n");
@@ -311,7 +313,7 @@ void KeyLiftAction(Key_Info_t *key)
 		keyvalue = key->key_value[1];
 	switch (keyvalue)
 	{
-	case S1:
+	case S1:	
 		//sendString("S1 is Lift\r\n");
 		break;
 	case S2:

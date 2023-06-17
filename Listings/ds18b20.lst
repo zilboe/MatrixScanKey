@@ -1,96 +1,110 @@
-C51 COMPILER V9.57.0.0   DS18B20                                                           06/01/2023 22:27:23 PAGE 1   
+C51 COMPILER V9.57.0.0   DS18B20                                                           06/17/2023 13:44:29 PAGE 1   
 
 
 C51 COMPILER V9.57.0.0, COMPILATION OF MODULE DS18B20
 OBJECT MODULE PLACED IN .\Objects\ds18b20.obj
-COMPILER INVOKED BY: D:\Keil5_Mdk\C51\BIN\C51.EXE DS18B20\ds18b20.c OPTIMIZE(8,SPEED) BROWSE INCDIR(..\key_scan;.\Key;.\
-                    -usart;.\Timer;.\Application;.\DS18B20) DEBUG OBJECTEXTEND PRINT(.\Listings\ds18b20.lst) TABS(2) OBJECT(.\Objects\ds18b20
-                    -.obj)
+COMPILER INVOKED BY: D:\Keil5_Mdk\C51\BIN\C51.EXE DS18B20\ds18b20.c LARGE OPTIMIZE(8,SPEED) BROWSE INCDIR(..\key_scan;.\
+                    -Key;.\usart;.\Timer;.\Application;.\DS18B20) DEBUG OBJECTEXTEND PRINT(.\Listings\ds18b20.lst) TABS(2) OBJECT(.\Objects\d
+                    -s18b20.obj)
 
 line level    source
 
    1          #include "ds18b20.h"
    2          #include "reg51.h"
    3          #include "main.h"
-   4          sbit DQ = P3 ^ 7;
-   5          void Ddelay(uint8_t t)
-   6          {
-   7   1        uint8_t n;
-   8   1        n = 0;
-   9   1        while (n < t)
-  10   1        {
-  11   2          n++;
-  12   2        }
-  13   1      }
-  14          
-  15          void Reset(void)
-  16          {
-  17   1        DQ = 1;
-  18   1        Ddelay(8);
-  19   1        DQ = 0;
-  20   1        Ddelay(85);
+   4          #include "usart.h"
+   5          #include "string.h"
+   6          #include "stdlib.h"
+   7          #include "stdio.h"
+   8          sbit DQ = P3 ^ 7;
+   9          void Ddelay(uint8_t t)
+  10          {
+  11   1        uint8_t n;
+  12   1        n = 0;
+  13   1        while (n < t)
+  14   1        {
+  15   2          n++;
+  16   2        }
+  17   1      }
+  18          
+  19          void Reset(void)
+  20          {
   21   1        DQ = 1;
-  22   1        Ddelay(14);
-  23   1      }
-  24          
-  25          void WriteChar(uint8_t dat)
-  26          {
-  27   1        uint8_t i;
-  28   1        for (i = 0; i < 8; i++)
-  29   1        {
-  30   2          DQ = 0;
-  31   2          DQ = dat & 0x01;
-  32   2          Ddelay(5);
-  33   2          DQ = 1;
-  34   2          dat >>= 1;
-  35   2        }
-  36   1        Ddelay(4);
-  37   1      }
-  38          
-  39          uint8_t ReadChar(void)
-  40          {
-  41   1        uint8_t i, dat = 0;
-  42   1        for (i = 0; i < 8; i++)
-  43   1        {
-  44   2          DQ = 1;
-  45   2          dat >> 1;
-*** WARNING C275 IN LINE 45 OF DS18B20\ds18b20.c: expression with possibly no effect
-  46   2          DQ = 1;
-  47   2          if (DQ)
-  48   2          {
-  49   3            dat = dat | 0x80;
-  50   3            Ddelay(4);
-  51   3          }
-  52   2        }
-C51 COMPILER V9.57.0.0   DS18B20                                                           06/01/2023 22:27:23 PAGE 2   
+  22   1        Ddelay(8);
+  23   1        DQ = 0;
+  24   1        Ddelay(85);
+  25   1        DQ = 1;
+  26   1        Ddelay(14);
+  27   1      }
+  28          
+  29          void WriteChar(uint8_t dat)
+  30          {
+  31   1        uint8_t i;
+  32   1        for (i = 0; i < 8; i++)
+  33   1        {
+  34   2          DQ = 0;
+  35   2          DQ = dat & 0x01;
+  36   2          Ddelay(5);
+  37   2          DQ = 1;
+  38   2          dat >>= 1;
+  39   2        }
+  40   1        Ddelay(4);
+  41   1      }
+  42          
+  43          uint8_t ReadChar(void)
+  44          {
+  45   1        uint8_t i, dat = 0;
+  46   1        for (i = 0; i < 8; i++)
+  47   1        {
+  48   2          DQ = 1;
+  49   2          dat >> 1;
+*** WARNING C275 IN LINE 49 OF DS18B20\ds18b20.c: expression with possibly no effect
+  50   2          DQ = 1;
+  51   2          if (DQ)
+  52   2          {
+C51 COMPILER V9.57.0.0   DS18B20                                                           06/17/2023 13:44:29 PAGE 2   
 
-  53   1        return dat;
-  54   1      }
-  55          
-  56          uint8_t ReadTemperature(void)
-  57          {
-  58   1        uint8_t tempH=0x00;
-  59   1        uint8_t tempL=0x00;
-  60   1        uint8_t temperature;
-  61   1        Reset();
-  62   1        WriteChar(0xcc);
-  63   1        WriteChar(0x44);
-  64   1        Ddelay(125);
+  53   3            dat = dat | 0x80;
+  54   3            Ddelay(4);
+  55   3          }
+  56   2        }
+  57   1        return dat;
+  58   1      }
+  59          
+  60          uint8_t ReadTemperature(void)
+  61          {
+  62   1        uint8_t tempH=0x00;
+  63   1        uint8_t tempL=0x00;
+  64   1        uint8_t temperature;
   65   1        Reset();
   66   1        WriteChar(0xcc);
-  67   1        WriteChar(0xbe);
-  68   1        tempL = ReadChar();
-  69   1        tempH = ReadChar();
-  70   1        temperature = ((tempH * 256) + tempL) * 0.0625 * 10;
-  71   1        Ddelay(200);
-  72   1        return (temperature); // 返回的是0123格式
-  73   1      }
+  67   1        WriteChar(0x44);
+  68   1        Ddelay(125);
+  69   1        Reset();
+  70   1        WriteChar(0xcc);
+  71   1        WriteChar(0xbe);
+  72   1        tempL = ReadChar();
+  73   1        tempH = ReadChar();
+  74   1        temperature = ((tempH * 256) + tempL) * 0.0625 * 10;
+  75   1        Ddelay(200);
+  76   1        return (temperature); // 返回的是0123格式
+  77   1      }
+  78          
+  79          void send_Temp(uint8_t temp)
+  80          {
+  81   1        memset(buf,0,sizeof(buf));
+  82   1        sprintf(buf,"current temp is %d .\r",temp);
+  83   1        buf[strlen(buf)-1]='\0';
+  84   1        sendByte(temp);
+  85   1        //sendByte("0xAA");
+  86   1        //sendString(buf);
+  87   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    166    ----
-   CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =   ----    ----
+   CODE SIZE        =    249    ----
+   CONSTANT SIZE    =     22    ----
+   XDATA SIZE       =   ----       1
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----

@@ -1,5 +1,6 @@
 #include "Timer.h"
 #include "Key.h"
+#include "Led.h"
 uint16_t sysCount;
 uint8_t keyvalue;
 uint32_t systicks;
@@ -32,7 +33,7 @@ void runAppLamp(void)
 void interrupt_timer1(void) interrupt 1
 {
     TH0 = (65536-1000)/256;    // 中断后，赋初值；
-    TL0 = (65536-1000)%256; 
+    TL0 = (65536-1000)%256;		
     if(!isLeftModeFlag)
     {
         keyvalue = getKeyValue();
@@ -58,4 +59,17 @@ void interrupt_timer1(void) interrupt 1
       runAppLamp();     //运行灯
       sysCount = 0; 
     }
+		//runLSD();
+}
+
+void tick_delay_Ms(uint32_t ms)
+{
+	uint32_t timetemp;
+	timetemp = systicks;
+	while((timetemp-systicks) > ms);
+}
+
+void interrupt_timer3(void) interrupt 3
+{
+	
 }
